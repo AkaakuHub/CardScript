@@ -21,6 +21,10 @@ const objects = {
     }
 }
 
+let headerText = "loop 200\n\n"
+let outPutTexArray = [];
+let footerText = "";
+
 let mainArea = document.getElementById("mainArea");
 let subArea = document.getElementById("subArea");
 let outputTextArea = document.getElementById("outputTextArea");
@@ -31,26 +35,16 @@ let NPWaitAddButton = document.getElementById("NPWaitAddButton");
 let turnButton = document.getElementById("turnButton");
 
 loopNumBox.addEventListener("input", () => {
-    let temp = outputTextArea.value.split("\n");
-    let count = loopNumBox.value !== "" && !isNaN(loopNumBox.value) ? loopNumBox.value : 1;
-    temp[0] = `loop ${count}`;
-    changeOutputText(temp.join("\n"));
+    headerText = `loop ${loopNumBox.value}\n`;
+    changeOutputText();
 });
 
 NPWaitAddButton.addEventListener("click", () => {
-    let temp = outputTextArea.value.split("\n");
-    let satrt = temp.shift();
-    let end = temp.pop();
-    temp.unshift(`wait ${npWaitTime}`);
-    temp.unshift(satrt);
-    temp.push(end);
-    changeOutputText(temp.join("\n"));
+    outPutTexArray.push(`wait ${npWaitTime}\n`);
+    changeOutputText();
 });
 
 turnButton.addEventListener("click", () => {
-    let temp = outputTextArea.value.split("\n");
-    let satrt = temp.shift();
-    let end = temp.pop();
     // rendaのkeyを取得
     let rendaKey = getCookie("renda1");
     if (rendaKey === null || rendaKey === "") {
@@ -63,10 +57,8 @@ turnButton.addEventListener("click", () => {
 // keyDown Space
 // keyUp Space
 // wait 3500
-    temp.unshift(text);
-    temp.unshift(satrt);
-    temp.push(end);
-    changeOutputText(temp.join("\n"));
+    outPutTexArray.push(text);
+    changeOutputText();
 });
 
 let configButton = document.getElementById("configButton");
@@ -136,13 +128,8 @@ for (const kind in objects) {
                 if (!isConfigMode) {
                     // Config モードでない場合の処理
                     if (inputKeyBox.value === "") { return; }
-                    let temp = outputTextArea.value.split("\n");
-                    let satrt = temp.shift();
-                    let end = temp.pop();
-                    temp.unshift(makeCommand(inputKeyBox.value, inputKeyBox.id));
-                    temp.unshift(satrt);
-                    temp.push(end);
-                    changeOutputText(temp.join("\n"));
+                    outPutTexArray.push(makeCommand(inputKeyBox.value, inputKeyBox.id));
+                    changeOutputText();
                     }
             });
             card.appendChild(invisibleButton);
@@ -179,14 +166,13 @@ document.addEventListener("DOMContentLoaded", () => {
     let support1 = getCookie("support1");
     let renda1 = getCookie("renda1");
 
-    let text = `loop 30\n
-# 画面飛ばす\nloop 28\nkeyDown Enter\nkeyUp Enter\nwait 400\nloopEnd\n# end\nwait 500\n
+    footerText = `\n#--end--\n# 画面飛ばす\nloop 28\nkeyDown Enter\nkeyUp Enter\nwait 400\nloopEnd\n# end\nwait 500\n
 # 連続出撃\nkeyDown ${yes1}\nkeyUp ${yes1}\nwait 1000\n#\n# リンゴ\nkeyDown ${apple1}\nkeyUp ${apple1}\nwait 500\nkeyDown ${yes1}\nkeyUp ${yes1}\nwait 6000\n#\n# サポート一番上\nkeyDown ${support1}\nkeyUp ${support1}\nwait 5000\n#\nkeyDown ${renda1}\nkeyUp ${renda1}\nwait 3000\n#\nloopEnd\n`;
-changeOutputText(text);
+    changeOutputText();
 });
 
-function changeOutputText(text) {
-    outputTextArea.value = text;
+function changeOutputText() {
+    outputTextArea.value = headerText + outPutTexArray.join("") + footerText;
     // textArea の高さを自動調整する
     outputTextArea.style.height = "auto";
     outputTextArea.style.height = outputTextArea.scrollHeight + "px";
@@ -205,21 +191,10 @@ function makeCommand(key, keyID) {
     }
     let text = "";
     if (isDoubleLocal) {
-        text = `keyDown ${key}\nkeyUp ${key}\nwait ${time1}#\nkeyDown ${key}\nkeyUp ${key}\nwait ${time2}###\n`;
+        text = `keyDown ${key}\nkeyUp ${key}\nwait ${time1}#\nkeyDown ${key}\nkeyUp ${key}\nwait ${time2}\n###\n`;
     } else {
-        text = `keyDown ${key}\nkeyUp ${key}\nwait ${time1}#\n`;
+        text = `keyDown ${key}\nkeyUp ${key}\nwait ${time1}\n#\n`;
     }
-// keyDown 9
-// keyUp 9
-// wait 250
-// ##
-// keyDown s
-// keyUp s
-// wait 250
-// keyDown s
-// keyUp s
-// wait 1300
-// #
     return text;
 }
 
