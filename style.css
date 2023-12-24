@@ -117,6 +117,12 @@ textarea {
     background-color: transparent;
     border: none;
 }
+.invisibleButton:hover{
+    background-color: #68a7ff7c;
+}
+.invisibleButton:active{
+    background-color: #6ba9ff;
+}
 /* */
 .attack1 {
     top: 60%;
