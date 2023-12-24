@@ -1,0 +1,316 @@
+@charset "UTF-8";
+
+.displayNone {
+    display: none;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    color: #000;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    background-image: url("./bg.gif");
+    background-repeat: repeat;
+}
+
+/* PC */
+@media screen and (min-width: 768px) {
+    .main {
+        width: 750px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+textarea {
+    width: 80%;
+    height: auto;
+    margin-top: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    resize: none;
+    line-height: 1.5;
+}
+.header {
+    color: #fff;
+    background: #2a2a2a;
+    border-top: solid 2px #000;
+    border-bottom: solid 2px #000;
+    display: flex;
+    position: fixed;
+    text-align: center;
+    z-index: 1;
+    justify-content: space-between;
+    width: 100%;
+    /* テキスト選択を無効にする */
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+.header > nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+#configButton{
+    transform: scale(3);
+    margin: 20px;
+}
+#isDoubleButton{
+    transform: scale(2);
+    margin: 20px;
+
+}
+#loopNumBox{
+    width: 3em;
+}
+#NPWaitTimeBox{
+    width: 6em;
+}
+
+.AreaContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#mainArea, #subArea {
+    width: 100%;
+    padding-top: 56.25%;
+    border: 1px solid #000;
+    position: relative;
+    text-align: center;
+    margin-top: 20px;
+    background-color: #ffffff7c;
+}
+.card,
+.button{
+    position: absolute;
+    border: solid 1px #000;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+.card {
+    width: 10%;
+    height: 25%;
+}
+.button {
+    width: 7%;
+    height: 12.7%;
+}
+.inputKeyBox{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+.invisibleButton{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+}
+/* */
+.attack1 {
+    top: 60%;
+    left: 20%;
+}
+
+.attack2 {
+    top: 60%;
+    left: 35%;
+}
+
+.attack3 {
+    top: 60%;
+    left: 50%;
+}
+
+.attack4 {
+    top: 60%;
+    left: 65%;
+}
+
+.attack5 {
+    top: 60%;
+    left: 80%;
+}
+
+.noble1 {
+    top: 30%;
+    left: 35%;
+}
+
+.noble2 {
+    top: 30%;
+    left: 50%;
+}
+
+.noble3 {
+    top: 30%;
+    left: 65%;
+}
+
+.skill1 {
+    top: 85%;
+    left: 5%;
+}
+
+.skill2 {
+    top: 85%;
+    left: 12%;
+}
+
+.skill3 {
+    top: 85%;
+    left: 19%;
+}
+
+.skill4 {
+    top: 85%;
+    left: 34%;
+}
+
+.skill5 {
+    top: 85%;
+    left: 41%;
+}
+
+.skill6 {
+    top: 85%;
+    left: 48%;
+}
+
+.skill7 {
+    top: 85%;
+    left: 63%;
+}
+
+.skill8 {
+    top: 85%;
+    left: 70%;
+}
+
+.skill9 {
+    top: 85%;
+    left: 77%;
+}
+
+.m_skill1 {
+    top: 30%;
+    left: 78%;
+}
+
+.m_skill2 {
+    top: 30%;
+    left: 85%;
+}
+
+.m_skill3 {
+    top: 30%;
+    left: 92%;
+}
+
+.select1 {
+    top: 85%;
+    left: 90%;
+    border-radius: 200px;
+    transform: scale(1.5) translate(-25%, -25%);
+}
+
+.select1 > input {
+    border-radius: 200px;
+}
+
+.master1 {
+    top: 50%;
+    left: 90%;
+    transform: rotateZ(45deg);
+}
+
+/* */
+.skill_target1 {
+    top: 20%;
+    left: 40%;
+}
+
+.skill_target2 {
+    top: 20%;
+    left: 50%;
+}
+
+.skill_target3 {
+    top: 20%;
+    left: 60%;
+}
+
+.ochange_target1 {
+    top: 37%;
+    left: 25%;
+}
+
+.ochange_target2 {
+    top: 37%;
+    left: 35%;
+}
+
+.ochange_target3 {
+    top: 37%;
+    left: 45%;
+}
+
+.ochange_target4 {
+    top: 37%;
+    left: 55%;
+}
+
+.ochange_target5 {
+    top: 37%;
+    left: 65%;
+}
+
+.ochange_target6 {
+    top: 37%;
+    left: 75%;
+}
+
+.ochange_ok1 {
+    top: 50%;
+    left: 50%;
+}
+
+.decide1 {
+    top: 85%;
+    left: 90%;
+    transform: scaleX(1.5) translate(-25%, -25%);
+}
+
+.renda1 {
+    top: 10%;
+    left: 80%;
+    transform: scaleX(1.5) translate(-25%, -25%);
+}
+
+.yes1 {
+    top: 70%;
+    left: 70%;
+    transform: scaleX(1.5) translate(-25%, -25%);
+}
+
+.apple1 {
+    top: 60%;
+    left: 50%;
+    transform: scaleX(1.5) translate(-25%, -25%);
+}
+
+.support1 {
+    top: 15%;
+    left: 20%;
+}

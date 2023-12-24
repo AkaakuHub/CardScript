@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <title>Card script</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="website">
+    <meta property="og:locate" content="ja_JP">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Card script">
+    <!-- reset.css modern-css-reset -->
+    <link
+    rel="stylesheet"
+    href="https://unpkg.com/modern-css-reset/dist/reset.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <script type="module" src="./index.js"></script>
+</head>
+
+<body>
+    <header class="header">
+        <nav>
+            <h1>Card script</h1>
+            <input type="checkbox" id="configButton" name="configButton" value="configButton">
+            <label for="configButton">設定モード</label>
+            <input type="checkbox" id="isDoubleButton" name="isDoubleButton" value="isDoubleButton" checked>
+            <label for="isDoubleButton">2回タップしますか？</label>
+        </nav>
+    </header>
+    <div class="main">
+        <h4 style="padding-top:100px">入力</h4>
+        <div class="AreaContainer">
+            <div id="mainArea"></div>
+            <div id="subArea"></div>
+        </div>
+        <div>
+            <input type="text" id="loopNumBox" name="inputText" placeholder="200" value="200">
+            回周回する<br>
+            <input type="text" id="NPWaitTimeBox" name="inputText" placeholder="14000" value="14000">
+            ms待つ
+            <input type="button" id="NPWaitAddButton" value="追加"><br>
+            ターン遷移時の連打
+            <input type="button" id="turnButton" value="追加"><br>
+        </div>
+        <h4>出力</h4>
+        <div id="outputArea">
+            <textarea placeholder="ここに結果が出ます" id="outputTextArea" spellcheck="false"></textarea>
+        </div>
+        <div>
+            <h4>TIPS</h4>
+            <ul>
+                <li>
+                    キャラ入れ替えでは長く待機
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
